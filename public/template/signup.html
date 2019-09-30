@@ -1,0 +1,44 @@
+
+<div class="signup">
+    <div class="dark-curtain"></div>
+    <div class="d-flex justify-content-center app-form-container">
+        <div class="shadow-lg card sign-up-card">
+            <div class="card-body">
+                <img src="./assets/ION_logo.png" alt="ION Group" class="ion-logo">
+                <h2 class="card-title mb-4 text-center">ION Birthday Notifier</h2>
+                <h4 class="card-title mb-4 text-center">Create Your Account!</h4>
+                <div class="card-text mb-4">
+                    <div id="wrap_name" class=" mb-3">
+                        <input required ng-model="Name" placeholder="Name" class="form-control rounded-lg" type="text">
+                        <span id="err_name" class="text-danger inline-error">*Name field contains more than one white space together, or something else than alphabets</span>
+                    </div>
+                    <div id="wrap_input" class="input-group mb-3 d-flex flex-row">
+                        <input required placeholder="Birth(mm/dd/yyy)" ng-model="BirthDate" class="birthday-input form-control rounded-lg" type="text">
+                        <span id="err_birth" class="text-danger inline-error">*Are you born in future?</span>
+                        <div class="ml-auto input-group-prepend">
+                            <span class="input-group-text" id="prepend-employee-code">C-</span>
+                        </div>
+                        <input required  ng-model="empId" placeholder="Employee Id" class="employeeId-input form-control rounded-lg" type="text" aria-describedby="prepend-employee-code">
+                        <span id="err_empId" class="ml-3 text-danger inline-error">*Incorrect format of empId</span>
+                    </div>
+                    <div id="email-input-wrapper" class="input-group mb-3">
+                        <input required ng-model="Email" placeholder="Email" class="form-control rounded-lg" type="text" aria-describedby="append_email">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="append_email">@iongroup.com</span>
+                        </div>
+                        <span id="err_email" class="inline-error ml-3 text-danger">*Incorrect format of email</span>
+                        <span id="err_email_exists" class="inline-error ml-3 text-danger">*Email already exists</span>
+                    </div>
+                    <div id="wrap_pass" class="mb-3 d-flex flex-row">
+                        <input required ng-model="pass" placeholder="Password" class="pass-input form-control rounded-lg" type="password">
+                        <span id="err_pass" class="inline-error ml-3 text-danger">*Password length must be greater than five</span>
+                        <input required ng-model="confirm_pass" placeholder="Confirm Password" class="confirm-pass-input form-control rounded-lg" type="password">
+                        <span id="err_cpass" class="inline-error ml-3 text-danger">*Passwords dont match</span>
+                    </div>
+                </div>
+                <a href="#"id="RegisterPerson" class="btn btn-primary px-auto ">Sign Up!</a>
+                <a ui-sref="signin" class="text-right login-link">Back to Login Screen?</a>
+            </div>
+        </div>
+    </div>
+</div>

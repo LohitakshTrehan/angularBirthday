@@ -1,0 +1,27 @@
+<div class="signin">
+    <div class="dark-curtain"></div>
+    <div class="d-flex justify-content-center app-form-container">
+        <div class="shadow-lg card sign-in-card" >
+            <div class="card-body">
+                <img class="ion-logo" src="./assets/ION_logo.png" alt="ION Group">
+                <h2 class="card-title mb-4 text-center">ION Birthday Notifier</h2>
+                <div class="card-text">
+                    <div id="email-input-wrapper" class="input-group mb-4">
+                        <input  placeholder="Email" id="login_email" class="form-control rounded-lg" type="text" aria-describedby="append_email">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="append_email">@iongroup.com</span>
+                        </div>
+                    </div>
+                    <span id="emailNotExist" style="display: none;font-size: 10px" class="ml-3 text-danger">*Email not found</span>
+                    <input  placeholder="Password" id="login_pass" class="form-control rounded-lg" type="password">
+                    <span id="wrong_cred" style="display: none;font-size: 10px" class="ml-3 text-danger">*Wrong credentials</span>
+                </div>
+                <div class="d-flex flex-row">
+                    <button type="submit" onclick="signInButtonClickHandler(event)" class="btn btn-primary px-auto mt-3 mb-3 align-self-baseline" style="display: inline-block;">Sign In</button>
+                    <a href="#" class=" pl-4 align-self-start ml-auto mb-3" style="display: block">Forgot Password?</a>
+                </div>
+                <a ui-sref="signup" id="signupForm" style="display: block">New here? Sign Up!</a>
+            </div>
+        </div>
+    </div>
+</div>
