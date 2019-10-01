@@ -73,6 +73,16 @@ body {
     font-size: 10px;
 }
 
+.signin .hide-inline-error{
+    display: none;
+    font-size: 10px;
+}
+
+.signin .show-inline-error{
+    display: inline;
+    font-size: 10px;
+}
+
 .sign-up-card .birthday-input{
     padding-right: 0px;
     margin-right: 12px;

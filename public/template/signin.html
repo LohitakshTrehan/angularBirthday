@@ -6,15 +6,15 @@
                 <img class="ion-logo" src="./assets/ION_logo.png" alt="ION Group">
                 <h2 class="card-title mb-4 text-center">ION Birthday Notifier</h2>
                 <div class="card-text">
-                    <div id="email-input-wrapper" class="input-group mb-4">
-                        <input  placeholder="Email" id="login_email" class="form-control rounded-lg" type="text" aria-describedby="append_email">
+                    <div id="email-input-wrapper" class="input-group" ng-class="{'mb-4':!(err.emailError)}">
+                        <input  placeholder="Email" ng-model="login_email" class="form-control rounded-lg" type="text" aria-describedby="append_email">
                         <div class="input-group-append">
                             <span class="input-group-text" id="append_email">@iongroup.com</span>
                         </div>
                     </div>
-                    <span id="emailNotExist" style="display: none;font-size: 10px" class="ml-3 text-danger">*Email not found</span>
-                    <input  placeholder="Password" id="login_pass" class="form-control rounded-lg" type="password">
-                    <span id="wrong_cred" style="display: none;font-size: 10px" class="ml-3 text-danger">*Wrong credentials</span>
+                    <span id="emailNotExist" style="font-size: 10px" class="ml-3 text-danger" ng-class="{'show-inline-error':err.emailNotFound,'hide-inline-error':!(err.emailNotFound)}">*Email not found</span>
+                    <input  placeholder="Password" ng-model="login_pass" class="form-control rounded-lg" type="password">
+                    <span id="wrong_cred" style="font-size: 10px" class="ml-3 text-danger" ng-class="{'show-inline-error':err.wrongCredentials,'hide-inline-error':!(err.wrongCredentials)}">*Wrong credentials</span>
                 </div>
                 <div class="d-flex flex-row">
                     <button type="submit" onclick="signInButtonClickHandler(event)" class="btn btn-primary px-auto mt-3 mb-3 align-self-baseline" style="display: inline-block;">Sign In</button>

@@ -1,4 +1,4 @@
-myApp.controller("signupController",['$scope',function($scope){
+myApp.controller("signupController",['$scope','dataOps','currentUser','$state',function($scope,dataOps,currentUser,$state){
     $( "#BirthDate" ).datepicker();
     document.getElementById("RegisterPerson").addEventListener('click',function(event){
         event.preventDefault();
@@ -17,13 +17,22 @@ myApp.controller("signupController",['$scope',function($scope){
             pass:false,
             cpass:false
         }
-        var output = (validate(name_value,dob,empId,enteredEmail,pass,$scope));
+        var output = (validate(name_value,dob,empId,enteredEmail,pass,$scope,dataOps));
         $scope = output.scope; 
         $scope.$apply();
+        if(output.isValid){
+            enteredEmail = enteredEmail + "@iongroup.com";
+            empId = "C-"+empId
+            //save user
+            dataOps.saveData(name_value,dob,enteredEmail,pass,empId);
+            //save current user
+            currentUser.setCurrentUser(enteredEmail,pass);
+            $state.go('home')
+        }
     });
 }])
 
-function validate(name_value,dob,empId,enteredEmail,pass,scope){
+function validate(name_value,dob,empId,enteredEmail,pass,scope,dataOps){
 
     //NO VALIDATION TEST FOR 29, 30, 31 FEB OR ANY OTHER INVALID DATE FOR A MONTH OR AN IMPROPER MONTH ARE CODED, IN CASE ERROR, DEFAULT DATE = 1, DEFAULT MONTH = 1
 
@@ -36,7 +45,7 @@ function validate(name_value,dob,empId,enteredEmail,pass,scope){
         nameArr = name_value.split(" ");
     }
     var confirm_pass = scope.confirm_pass;
-    var isValid = false;
+    var isValid = true;
     var err = 0;
     //chnage using join
     if(nameArr !== undefined){
@@ -97,7 +106,7 @@ function validate(name_value,dob,empId,enteredEmail,pass,scope){
         scope.show_error.email = false;
         //document.getElementById("err_email").style["display"]="none";
     }
-    if(enteredEmail!==undefined && emailExists(enteredEmail)){
+    if(enteredEmail!==undefined && emailExists(enteredEmail,dataOps)){
         document.getElementById("email-input-wrapper").setAttribute("class","mb-1");
         scope.show_error.email_exist = true;
         //document.getElementById("err_email_exists").style["display"]="inline";
@@ -153,8 +162,8 @@ function seeIfBorn(bornOn){
     }
 }
 
-function emailExists(email){
-    var persons = getData()
+function emailExists(email,dataOps){
+    var persons = dataOps.getData()
     if(persons===null)
         return false;
     else{
