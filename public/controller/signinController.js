@@ -4,8 +4,8 @@ myApp.controller("signinController",['$scope','dataOps','currentUser','$state',f
         emailNotFound:false,
         wrongCredentials:false
     }
-    window.signInButtonClickHandler = (event)=>{
-        event.preventDefault();
+    $scope.signInButtonClickHandler = function(){
+        console.log("check");
         $scope.err = {
             emailError:false,
             emailNotFound:false,
@@ -40,7 +40,6 @@ myApp.controller("signinController",['$scope','dataOps','currentUser','$state',f
                 $scope.err.wrongCredentials=true;
             }
         }
-        $scope.$apply();
     }
 
 }])

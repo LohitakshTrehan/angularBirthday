@@ -117,3 +117,166 @@ body {
 .btn-group-vertical>.btn, .btn-group>.btn {
     flex: none !important
 }
+
+
+
+
+
+
+
+
+
+
+.home-view .modal-body .hide-inline-error{
+    display: none;
+}
+
+.home-view .modal-body .show-inline-error{
+    display: inline;
+}
+
+.home-view{
+    height: 980px;
+}
+
+.home-view .home-navbar{
+    width: 100%
+}
+
+.home-view .home-navbar nav{
+    background-color:lightgray; 
+    padding: 0px;
+}
+
+.home-view .home-navbar .left-nav-elements{
+    font-size: larger;
+    font-weight: 600;
+    margin:4px 0px; 
+    border-right: 2px solid white;
+}
+
+.home-view .home-navbar .right-nav-elements{
+    margin:4px 0px;
+    border-left: 2px solid white;
+}
+
+.home-view .modal-body .left-input{
+    padding-right: 0px;
+    margin-right: 12px;
+}
+
+.home-view .modal-body .right-input{
+    padding-right: 0px;
+    margin-left: 12px;
+}
+
+.home-view .list-content{
+    display: flex; height: 100%;
+}
+
+.home-view .list-content .list-all{
+    flex: 1 1 0;
+    overflow: hidden;
+    border-style: none double none none;
+    padding-right: 5px;
+    border-width: 4px;
+    margin-bottom: 66px !important;
+}
+
+.list-content .list-all-container{
+    overflow: auto; max-height: 800px;
+}
+
+.list-content .person-name{
+    font-size: larger;
+    font-weight: 600;
+    display: block;
+    width:400px;
+}
+
+.list-content .person-dob-prepend{
+    font-size: larger;
+    display: block;
+    width:400px;
+}
+
+.home-view .list-content .person-dob{
+    font-weight: 600
+}
+
+.home-view .list-content .person-connection-link{
+    cursor: pointer; 
+    width: 30px;
+    height:30px;
+    border-radius:15px;
+}
+
+.home-view .list-content .person-teams-link{
+    cursor: pointer;
+    width: 35px;
+    height:30px;
+    border-radius:5px;
+}
+
+.home-view .list-content .put-border{
+    border-style: none none double none;
+    border-width: 4px;
+    height: 463px;
+}
+
+.home-view .list-content .top-right-screen{
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-view .list-content .top-right-flex{
+    flex: 1;
+    overflow: hidden;
+     max-height: 48px;
+}
+
+.home-view .list-content .top-right-heading{
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+.home-view .list-content .todays-birthday{
+    flex: 1;
+    overflow: auto;
+    max-height: 350px;
+}
+
+.home-view .list-content .bottom-right-screen{
+    flex: 1;
+    overflow: hidden;
+     max-height: 48px;
+}
+
+.home-view .list-content .bottom-right-heading{
+    font-size: xx-large;
+    font-weight: 500
+}
+
+.home-view .list-content .bottom-right-list{
+    flex: 1;
+    overflow: auto;
+    max-height: 350px;
+}
+
+.home-view .navbar-brand {
+    margin-right: 0px;
+}
+.home-view .dropdown-menu {
+    width: fit-content;
+    min-width: 0px;
+    text-align: center;
+}
+.home-view .dropdown-item {
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.home-view .list-group-item {
+    margin-bottom: 0px;
+}

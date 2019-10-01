@@ -19,7 +19,7 @@ myApp.service('currentUser', ['dataOps', function(dataOps) {
         if(data){
             currentUser = data;
         }
-        return JSON.parse(currentUser);
+        return currentUser;
     }
 
     this.getCurrentUserName = function(){

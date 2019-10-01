@@ -1,116 +1,118 @@
-<!--NAVBAR--->
-<div class="home-navbar" id="homepage_nav">
-    <nav class="shadow-sm navbar navbar-expand-lg navbar-light" >
-        <a class="left-nav-elements navbar-brand ml-1 pr-1" href="#" onclick="document.location.reload(true)">
-            <img src="./assets/ION_logo.png" width="50" height="30" alt="ION">
-        </a>
-        <a class="left-nav-elements navbar-brand ml-2 pr-1" href="#" onclick="document.location.reload(true)">ION Birthday Notifier</a>
-        <img class="right-nav-elements ml-auto navbar-brand pl-1 mr-2" src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png">
-        <a ng-bind="userName" class="navbar-brand mr-2"></a>
-        <div class="right-nav-elements pl-1 dropdown dropleft">
-            <img class="navbar-brand mr-2 dropdown-toggle" id="home_settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://img.icons8.com/ios-filled/20/000000/settings.png" alt="settings">
-            <div class="dropdown-menu " aria-labelledby="home_settings">
-                <a ng-click="editProfileFun()" id="edit_profile" class="dropdown-item" href="#" data-toggle="modal" data-target="#editProfileModal">Edit Profile</a>
-            </div>
-        </div>
-        <img id="logout" ng-click="logoutFun()" class="right-nav-elements navbar-brand mr-2 pl-1" src="https://img.icons8.com/windows/30/000000/exit.png" alt="signOut">
-    </nav>
-</div>
-
-
-<!---EDIT PROFILE MODEL------------>
-<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="wrap_name" class=" mb-3">
-                    <input required ng-model="Name" value="Name" class="form-control rounded-lg" type="text">
-                    <span id="err_name"  class="inline-error text-danger">*Name field contains more than one white space together, or something else than alphabets</span>
-                </div>
-                <div id="wrap_input" class="mb-3 d-flex flex-row">
-                    <input required value="Date of Birth" ng-model="BirthDate" class="left-input form-control rounded-lg" type="text" >
-                    <span id="err_birth"  class="inline-error text-danger">*Are you born in future?</span>
-                    <input required  ng-model="empId" value="Employee Id" class="right-input form-control rounded-lg" type="text" >
-                    <span id="err_empId"  class="inline-error ml-3 text-danger">*Incorrect format of empId</span>
-                </div>
-                <div id="email-input-wrapper" class="mb-3">
-                    <span style="font-weight: 700" ng-bind="Email"></span>
-                </div>
-                <div id="wrap_pass" class="mb-3 d-flex flex-row">
-                    <input required ng-model="pass" placeholder="Change Password" class="left-input form-control rounded-lg" type="password" >
-                    <span id="err_pass"  class="inline-error ml-3 text-danger">*Password length must be greater than five</span>
-                    <input required id="confirm_pass" placeholder="Confirm Password" class="right-input form-control rounded-lg" type="password">
-                    <span id="err_cpass"  class="inline-error ml-3 text-danger">*Passwords dont match</span>
+<div class="home-view">
+    <!--NAVBAR--->
+    <div class="home-navbar" id="homepage_nav">
+        <nav class="shadow-sm navbar navbar-expand-lg navbar-light" >
+            <a class="left-nav-elements navbar-brand ml-1 pr-1" href="#" onclick="document.location.reload(true)">
+                <img src="./assets/ION_logo.png" width="50" height="30" alt="ION">
+            </a>
+            <a class="left-nav-elements navbar-brand ml-2 pr-1" href="#" onclick="document.location.reload(true)">ION Birthday Notifier</a>
+            <img class="right-nav-elements ml-auto navbar-brand pl-1 mr-2" src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png">
+            <a ng-bind="userName" class="navbar-brand mr-2"></a>
+            <div class="right-nav-elements pl-1 dropdown dropleft">
+                <img class="navbar-brand mr-2 dropdown-toggle" id="home_settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://img.icons8.com/ios-filled/20/000000/settings.png" alt="settings">
+                <div class="dropdown-menu " aria-labelledby="home_settings">
+                    <a ng-click="editProfileFun()" id="edit_profile" class="dropdown-item" data-toggle="modal" data-target="#editProfileModal">Edit Profile</a>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button ng-click="saveProfileFun()" id="save-edited-profile" type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+            <img id="logout" ng-click="logoutFun()" class="right-nav-elements navbar-brand mr-2 pl-1" src="https://img.icons8.com/windows/30/000000/exit.png" alt="signOut">
+        </nav>
     </div>
-</div>
 
-<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<div id="main-content" class="list-content">
-    <div class="m-3 list-all">
-        <div>
-            <div class="mb-4 mt-2">
-                <span class="mr-5" style="font-size: xx-large;font-weight: 500">List of all Birthday's</span>
-                <span style="display: none" class="mr-5"><input value="Search Name" type="text"></span>
-                <span class="pl-1 pr-2 pb-1" style="display: none; cursor: pointer; border: solid;border-color:black;border-width:1px;border-radius:5px;">
-                    <img src="https://img.icons8.com/material-sharp/24/000000/sort.png" alt="sort">
-                    <span>Sort by Date of Birth</span>
-                </span>
-            </div>
-            <div id="list_all_bday" class="list-all-container list-group">
-                <div id="card-template" class="card card-body list-group-item" style="display: none">
-                    <div class="d-flex flex-row personContent">
-                        <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" alt="User">
-                    <!----><span title="name" class="person-name ml-4">
-                        </span>
-                        <span class="person-dob-prepend">
-                        <!----><span title="Date of Birth" class="person-dob">1st, January</span>
-                        </span>
-                    <!----><img title="connection" class="shadow ml-auto mr-3 person-connection-link" target="_blank" onclick="window.open('https://connect.iongroup.com/person/99859','Connection Profile','height=900,width=1000')" src="./assets/connection_icon.png" alt="Connection link">
-                        <a title="microsoft teams" class="shadow mr-1 person-teams-link">
-                            <img class="person-teams-link" src="./assets/teams_icon.png" alt="Teams link">
-                        </a>
+    <!---EDIT PROFILE MODEL------------>
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="wrap_name" ng-class="{'mb-3':!(err.wrap_name),'mb-1':(err.wrap_name)}">
+                        <input required ng-model="Name" id="Name" value="Name" class="form-control rounded-lg" type="text">
+                        <span id="err_name" ng-class="{'show-inline-error':err.name_err,'hide-inline-error':!(err.name_err)}"  class="inline-error text-danger">*Name field contains more than one white space together, or something else than alphabets</span>
                     </div>
-                </div>            
+                    <div id="wrap_input" ng-class="{'mb-3':!(err.wrap_input),'mb-1':(err.wrap_input)}" class="d-flex flex-row">
+                        <input required value="Date of Birth" ng-model="BirthDate" id="BirthDate" class="left-input form-control rounded-lg" type="text" >
+                        <span id="err_birth" ng-class="{'show-inline-error':err.dob_err,'hide-inline-error':!(err.dob_err)}"  class="inline-error text-danger">*Are you born in future?</span>
+                        <input required  ng-model="empId" id="empId" value="Employee Id" class="right-input form-control rounded-lg" type="text" >
+                        <span id="err_empId" ng-class="{'show-inline-error':err.empid_err,'hide-inline-error':!(err.empid_err)}"  class="inline-error ml-3 text-danger">*Incorrect format of empId</span>
+                    </div>
+                    <div id="email-input-wrapper" class="mb-3">
+                        <span style="font-weight: 700" ng-bind="Email"></span>
+                    </div>
+                    <div id="wrap_pass" ng-class="{'mb-3':!(err.wrap_pass),'mb-1':(err.wrap_pass)}" class="d-flex flex-row">
+                        <input required ng-model="pass" id="pass" placeholder="Change Password" class="left-input form-control rounded-lg" type="password" >
+                        <span id="err_pass" ng-class="{'show-inline-error':err.pass_err,'hide-inline-error':!(err.pass_err)}"  class="inline-error ml-3 text-danger">*Password length must be greater than five</span>
+                        <input required ng-model="confirm_pass" id="confirm_pass" placeholder="Confirm Password" class="right-input form-control rounded-lg" type="password">
+                        <span id="err_cpass" ng-class="{'show-inline-error':err.cpass_err,'hide-inline-error':!(err.cpass_err)}"  class="inline-error ml-3 text-danger">*Passwords dont match</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button ng-click="saveProfileFun()" id="save-edited-profile" type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-    <div class="my-3 mr-3 top-right-screen">
-        <div class="put-border">
-            <div class="mb-4 mt-2 top-right-flex">
-                <div>
-                    <span class="top-right-heading">Today's Birthday (<span id="todays-date"></span>)</span>
+    <div id="main-content" class="list-content">
+        <div class="m-3 list-all">
+            <div>
+                <div class="mb-4 mt-2">
+                    <span class="mr-5" style="font-size: xx-large;font-weight: 500">List of all Birthday's</span>
+                    <span style="display: none" class="mr-5"><input value="Search Name" type="text"></span>
+                    <span class="pl-1 pr-2 pb-1" style="display: none; cursor: pointer; border: solid;border-color:black;border-width:1px;border-radius:5px;">
+                        <img src="https://img.icons8.com/material-sharp/24/000000/sort.png" alt="sort">
+                        <span>Sort by Date of Birth</span>
+                    </span>
+                </div>
+                <div id="list_all_bday" class="list-all-container list-group">
+                    <div id="card-template" class="card card-body list-group-item" style="display: none">
+                        <div class="d-flex flex-row personContent">
+                            <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" alt="User">
+                        <!----><span title="name" class="person-name ml-4">
+                            </span>
+                            <span class="person-dob-prepend">
+                            <!----><span title="Date of Birth" class="person-dob">1st, January</span>
+                            </span>
+                        <!----><img title="connection" class="shadow ml-auto mr-3 person-connection-link" target="_blank" onclick="window.open('https://connect.iongroup.com/person/99859','Connection Profile','height=900,width=1000')" src="./assets/connection_icon.png" alt="Connection link">
+                            <a title="microsoft teams" class="shadow mr-1 person-teams-link">
+                                <img class="person-teams-link" src="./assets/teams_icon.png" alt="Teams link">
+                            </a>
+                        </div>
+                    </div>            
                 </div>
             </div>
-            <div class="todays-birthday" id="list_today_bday"></div>
         </div>
+
+        <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
         <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-        <div class="mb-2 mt-3 bottom-right-screen">
-            <div>
-                <span class="bottom-right-heading">Upcoming Birthday's</span>
+        <div class="my-3 mr-3 top-right-screen">
+            <div class="put-border">
+                <div class="mb-4 mt-2 top-right-flex">
+                    <div>
+                        <span class="top-right-heading">Today's Birthday (<span id="todays-date"></span>)</span>
+                    </div>
+                </div>
+                <div class="todays-birthday" id="list_today_bday"></div>
             </div>
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <div class="mb-2 mt-3 bottom-right-screen">
+                <div>
+                    <span class="bottom-right-heading">Upcoming Birthday's</span>
+                </div>
+            </div>
+            <div class="bottom-right-list" id="list_upcoming_bday"></div>
         </div>
-        <div class="bottom-right-list" id="list_upcoming_bday"></div>
     </div>
 </div>

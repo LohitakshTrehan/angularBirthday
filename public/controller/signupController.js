@@ -32,6 +32,7 @@ myApp.controller("signupController",['$scope','dataOps','currentUser','$state',f
     });
 }])
 
+
 function validate(name_value,dob,empId,enteredEmail,pass,scope,dataOps){
 
     //NO VALIDATION TEST FOR 29, 30, 31 FEB OR ANY OTHER INVALID DATE FOR A MONTH OR AN IMPROPER MONTH ARE CODED, IN CASE ERROR, DEFAULT DATE = 1, DEFAULT MONTH = 1

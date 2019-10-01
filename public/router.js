@@ -1,7 +1,5 @@
 myApp.config(function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/signin');
-
     $stateProvider
     .state('signin', {
         url: '/signin',

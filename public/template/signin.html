@@ -17,7 +17,7 @@
                     <span id="wrong_cred" style="font-size: 10px" class="ml-3 text-danger" ng-class="{'show-inline-error':err.wrongCredentials,'hide-inline-error':!(err.wrongCredentials)}">*Wrong credentials</span>
                 </div>
                 <div class="d-flex flex-row">
-                    <button type="submit" onclick="signInButtonClickHandler(event)" class="btn btn-primary px-auto mt-3 mb-3 align-self-baseline" style="display: inline-block;">Sign In</button>
+                    <button type="submit" ng-click="signInButtonClickHandler()" class="btn btn-primary px-auto mt-3 mb-3 align-self-baseline" style="display: inline-block;">Sign In</button>
                     <a href="#" class=" pl-4 align-self-start ml-auto mb-3" style="display: block">Forgot Password?</a>
                 </div>
                 <a ui-sref="signup" id="signupForm" style="display: block">New here? Sign Up!</a>
