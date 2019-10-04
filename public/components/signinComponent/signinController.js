@@ -5,7 +5,6 @@ myApp.controller("signinController",['$scope','dataOps','currentUser','$state',f
         wrongCredentials:false
     }
     $scope.signInButtonClickHandler = function(){
-        console.log("check");
         $scope.err = {
             emailError:false,
             emailNotFound:false,
