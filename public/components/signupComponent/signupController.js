@@ -49,7 +49,6 @@ myApp.controller("signupController",['$scope','dataOps','currentUser','$state',f
                 if(nameArr[i].match(letters)===null){
                     document.getElementById("wrap_name").setAttribute("class","mb-1");
                     $scope.show_error.name = true;
-                    //document.getElementById("err_name").style["display"]="inline";
                     isValid = false;
                     err = 1;
                     break;
@@ -58,7 +57,6 @@ myApp.controller("signupController",['$scope','dataOps','currentUser','$state',f
             if(err===0){
                 document.getElementById("wrap_name").setAttribute("class","mb-3");
                 $scope.show_error.name = false;
-                //document.getElementById("err_name").style["display"]="none";
             }
         }
         else{
@@ -72,11 +70,9 @@ myApp.controller("signupController",['$scope','dataOps','currentUser','$state',f
             isValid = false;
             if(!isBorn){
                 $scope.show_error.dob = true;
-                //document.getElementById("err_birth").style["display"]="inline";
             }
             if(empId===undefined || empId.match(empIdPattern)===null){
                 $scope.show_error.empId = true;
-                //document.getElementById("err_empId").style["display"]="inline";
             }
         }
         if(isBorn && empId!==undefined && empId.match(empIdPattern)!==null){
@@ -84,58 +80,47 @@ myApp.controller("signupController",['$scope','dataOps','currentUser','$state',f
         }
         if(isBorn){
             $scope.show_error.dob = false;
-            //document.getElementById("err_birth").style["display"]="none";
         }
         if(empId!==undefined && empId.match(empIdPattern)!==null){
             $scope.show_error.empId = false;
-            //document.getElementById("err_empId").style["display"]="none";
         }
         
         if(enteredEmail===undefined || enteredEmail.match(email)===null){
             document.getElementById("email-input-wrapper").setAttribute("class","mb-1");
             $scope.show_error.email = true;
-            //document.getElementById("err_email").style["display"]="inline";
             isValid = false;
         }
         else{
             document.getElementById("email-input-wrapper").setAttribute("class","mb-3");
             $scope.show_error.email = false;
-            //document.getElementById("err_email").style["display"]="none";
         }
         if(enteredEmail!==undefined && $scope.emailExists(enteredEmail)){
             document.getElementById("email-input-wrapper").setAttribute("class","mb-1");
             $scope.show_error.email_exist = true;
-            //document.getElementById("err_email_exists").style["display"]="inline";
             isValid = false;
         }
         else{
             document.getElementById("email-input-wrapper").setAttribute("class","mb-3");
             $scope.show_error.email_exist = false;
-            //document.getElementById("err_email_exists").style["display"]="none";
         }
     
         if(pass===undefined || pass.length<5){
             document.getElementById("wrap_pass").setAttribute("class","mb-1 d-flex flex-row");
             isValid = false;
             $scope.show_error.pass = true;
-            //document.getElementById("err_pass").style["display"]="inline";
     
             $scope.show_error.cpass = false;
-            //document.getElementById("err_cpass").style["display"]="none";
         }
         else{
             $scope.show_error.pass = false;
-            //document.getElementById("err_pass").style["display"]="none";
             if(confirm_pass===undefined || pass!==confirm_pass){
                 document.getElementById("wrap_pass").setAttribute("class","mb-1 d-flex flex-row");
                 $scope.show_error.cpass = true;
-                //document.getElementById("err_cpass").style["display"]="inline";
                 isValid = false;
             }
             else{
                 document.getElementById("wrap_pass").setAttribute("class","mb-3 d-flex flex-row");
                 $scope.show_error.cpass = false;
-                //document.getElementById("err_cpass").style["display"]="none";
             }
         }
         return isValid;
